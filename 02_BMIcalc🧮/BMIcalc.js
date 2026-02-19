@@ -17,7 +17,7 @@ form.addEventListener('submit', function(e){
   } else{
     const bmi = (weight /((height * height)/ 10000 )).toFixed(2);
     //Show's the result
-    results.innerHTML = `<span>${bmi}</bmi>`;
+    results.innerHTML = `<span>${bmi}</span>`;
 
   }
 });
