@@ -2,35 +2,45 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Snake game</title>
+  
+  <title>Snake Game</title>
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
   <main>
     <section>
+      <!----Game information Panel-->
       <div class="infos">
-        <div class="info">
-          <h3>High Score:
-            <span id="high-score">0</span>
-          </h3>
-        </div>
+        <h3 id="high-score">High Score: <span>0</span></h3>
+        <h3 id="score">Score: <span>0</span></h3>
+        <h3 id="time">Time: <span>0</span></h3>
+      </div>
 
-        <div class="info">
-          <h3>Score:
-            <span id="score">0</span>
-          </h3>
-        </div>
-        
-        <div class="info">
-          <h3>Time:
-            <span id="time">00-00</span>
-          </h3>
-        </div>
+      <!--Game board Container-->
+      <div class="board">
+        <!--Javascript will generate the grid blocks here. -->
 
       </div>
-      <div class="board"></div>
     </section>
   </main>
+
+  <!--Game Overlays / Modals-->
+  <div clas="modal">
+    <!--Start Game Screen-->
+    <div class="start-game">
+      <h3>Welcome to the Snake game 🐍</h3>
+      <button class="btn btn-start">Start</button>
+    </div>
+    
+    <!--Game Over Screen-->
+    <div class="game-over">
+      <h3>GAME OVER</h3>
+      <button class="btn btn-restart">Restart Game</button>
+    </div>
+
+  </div>
+
+  <!--JS Link-->
+  <script src="script.js"></script>
 </body>
 </html>
