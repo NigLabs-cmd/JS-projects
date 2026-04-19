@@ -1,3 +1,32 @@
+/* CSS ROOT VARIABLS */
+:root{
+  /* Colors*/
+  --bg-primary-color:  #1a1a1a; /*Off-Black BG*/
+  --text-primary-color: #ffffff; /* Text Color*/
+  --border-primary-color: #333333; /*Board and Info borders*/
+  --bg-fill-color: #f0f0f0; /* Snake body color*/
+  --bg-food-color: red;     /*Food Color*/
+
+
+    /*Spacing Variables*/
+  --space-xs: 4px;
+  --space-sm: 8px;
+  --space-md: 16px;
+  --space-lg: 24px;
+  --space-xl: 32px;
+  --space-2xl: 40px;
+
+  /* Border Radius Variables*/
+  --border-radius-xs: 4px;
+  --border-radius-sm: 8px;
+  --border-radius-md: 12px;
+  --border-radius-lg: 16px;
+  --border-radius-2xl: 24px;
+  
+}
+
+/* BOILER PLATE AND BASE STYLE*/
+
 *{
   margin: 0;
   padding: 0;
@@ -10,32 +39,14 @@ body{
   width: 100%;
 }
 
-:root{
 
-  --bg-primary-color: #0c0c0c;
-
-  /*Text Colors */
-  --text-primary-color: #f0f0f0;
-
-  /*Spacing Variables*/
-  --space-xs: 4px;
-  --space-s: 8px;
-  --space-md: 16px;
-  --space-lg: 24px;
-  --space-xl: 32px;
-  --space-2xl: 40px;
-  --space-3xl: 48px;
-}
-
-
-
-
-
-html{
+body {
   background-color: var(--bg-primary-color);
   color: var(--text-primary-color);
-  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  font-family: system-ui;
 }
+
+/* GAME LAYOUT (UI & BOARD) */
 
 main,
 section{
@@ -44,11 +55,87 @@ section{
 }
 
 section{
-  padding: 40px;
+  display: flex;
+  flex-direction: column;
+  padding: var(--space-2xl);
+  gap: var(--space-lg);
 }
 
-section .infos{
+/* Top Information Panel*/
+.infos{
   width: 100%;
   display: flex;
   justify-content:space-between ;
+  padding: var(--space-sm) var(--space-md);
+  border: 1px solid var(--border-primary-color);
+  border-radius: var(--border-radius-sm);
+}
+
+/* Game Board using CSS Grid*/
+.board{
+  flex-grow: 1; /*Allows board to take remaining height*/
+  border: 1 px solid var(--border-primary-color);
+  display: grid;
+  /* minmax(30px, 1fr) distributes extra screen space evenly across grid blocks so no gaps are left at the edges */
+  grid-template-columns: repeat(auto-fill,minmax(30px, 1fr));
+  grid-template-rows: repeat(auto-fill, minmax(30px, 1fr));
+}
+
+/* GAME ELEMENTS*/
+.block{
+  border-radius: 50%; /* Rounds the snake and food elements */
+
+} 
+
+/* Applied via JavaScript when a block becomes part of the snake */
+.fill{
+  background-color: var(--bg-fill-color);
+}
+
+/* Applied via JavaScript when a block becomes food */
+.food{
+  background-color: var(--bg-food-color);
+}
+
+/*OVERLAYS AND MODALS */
+.modal{
+  height: 100vh;
+  width: 100vw;
+  position: fixed;
+  top : 0;
+  background-color: transparent;
+  backdrop-filter: blur(5px);  /* Blurs the game board in the background */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Grouping both modal screens */
+.modal .start-game,
+.modal .game-over{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap:var(--space-lg);
+
+}
+/* Hidden by default, toggled to 'flex' via JS when the game ends*/
+.game-over{
+  display: none;
+}
+
+/*BUTTON STYLING & ANIMATIONS */
+
+.btn{
+  padding: var(--space-sm) var(--space-md);
+  border: none;
+  border-radius: var(--border-radius-sm);
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+/* Hover effect scaling */
+.btn:hover{
+  transform: scale(1.1);
+
 }
